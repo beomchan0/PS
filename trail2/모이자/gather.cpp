@@ -1,5 +1,7 @@
 #include <iostream>
 #include <algorithm>
+#include <cstdlib>
+#include <climits>
 
 using namespace std;
 
@@ -12,17 +14,9 @@ int main() {
         cin >> A[i];
     }
 
-    int min_dis=0;
-    for(int i=0; i<1; i++){
-        int sum=0;
-        for(int j=0; j<n; j++){
-            sum+=abs(i-j)*A[j];
-        }
+    int min_dis=INT_MAX;
 
-        min_dis = sum;
-    }
-
-    for(int i=1; i<n; i++){
+    for(int i=0; i<n; i++){
         int sum=0;
         for(int j=0; j<n; j++){
             sum+=abs(i-j)*A[j];
