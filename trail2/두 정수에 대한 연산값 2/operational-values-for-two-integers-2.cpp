@@ -4,20 +4,20 @@ using namespace std;
 
 int a, b;
 
-void f(int *p1, int *p2){
-    if(*p1>*p2){
-        *p1 *=2;
-        *p2 +=10;
+void f(int &n1, int &n2){
+    if(n1>n2){
+        n1 *=2;
+        n2 +=10;
     }else{
-        *p2 *=2;
-        *p1 +=10;
+        n2 *=2;
+        n1 +=10;
     }
 }
 
 int main() {
     cin >> a >> b;
 
-    f(&a, &b);
+    f(a, b);
 
     cout << a << " " << b;
 
