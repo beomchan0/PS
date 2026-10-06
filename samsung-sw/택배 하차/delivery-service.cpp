@@ -109,84 +109,76 @@ void plus_box(){
 
 int select_left(){
     int num=101;
-    int i=1;
-    while(i<=n){
-        int flag2=0;
-        for(int j=1; j<=n; j++){
-            if(grid[i][j]!=0){
-                int cur_num=grid[i][j];
-                if(cur_num>num){
+
+    for(int i=1; i<=100; i++){
+        if(boxs2[i].live==0){
+            continue;
+        }
+
+        int flag=1;
+        int r,c;
+        for(int a=1; a<=n; a++){
+            int find=0;
+            for(int b=1; b<=n; b++){
+                if(grid[a][b]==i){
+                    r=a;
+                    c=b;
+                    find=1;
                     break;
                 }
-                int flag=1;
-                for(int a=i; a<i+boxs2[cur_num].h; a++){
-                    int sum=0;
-                    for(int b=1; b<j; b++){
-                        sum+=grid[a][b];
-                    }
-                    if(sum!=0){
-                        flag=0;
-                        flag2=1;
-                        i=a;
-                        break;
-                    }
+            }
+            if(find==1) break;
+        }
+
+        for(int a=r; a<r+boxs2[i].h; a++){
+            for(int b=1; b<c; b++){
+                if(grid[a][b]!=0){
+                    flag=0;
                 }
-                if(flag==1){
-                    if(cur_num<num){
-                        num=cur_num;
-                        flag2=1;
-                        i+=boxs2[cur_num].h;
-                    }
-                }
-                break;
             }
         }
-        if(flag2==0){
-            i++;
+
+        if(flag==1){
+            return i;
         }
     }
-    return num;
 }
 
 int select_right(){
     int num=101;
-    int i=1;
-    while(i<=n){
-        int flag2=0;
-        for(int j=n; j>=1; j--){
-            if(grid[i][j]!=0){
-                int cur_num=grid[i][j];
-                if(cur_num>num){
+
+    for(int i=1; i<=100; i++){
+        if(boxs2[i].live==0){
+            continue;
+        }
+
+        int flag=1;
+        int r,c;
+        for(int a=1; a<=n; a++){
+            int find=0;
+            for(int b=n; b>=1; b--){
+                if(grid[a][b]==i){
+                    r=a;
+                    c=b;
+                    find=1;
                     break;
                 }
-                int flag=1;
-                for(int a=i; a<i+boxs2[cur_num].h; a++){
-                    int sum=0;
-                    for(int b=n; b>j; b--){
-                        sum+=grid[a][b];
-                    }
-                    if(sum!=0){
-                        flag=0;
-                        flag2=1;
-                        i=a;
-                        break;
-                    }
+            }
+            if(find==1) break;
+        }
+
+        for(int a=r; a<r+boxs2[i].h; a++){
+            for(int b=n; b>c; b--){
+                if(grid[a][b]!=0){
+                    flag=0;
                 }
-                if(flag==1){
-                    if(cur_num<num){
-                        num=cur_num;
-                        flag2=1;
-                        i+=boxs2[cur_num].h;
-                    }
-                }
-                break;
             }
         }
-        if(flag2==0){
-            i++;
+
+        if(flag==1){
+            return i;
         }
     }
-    return num;
 }
 
 void out_left(){
